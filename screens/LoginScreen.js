@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Button, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { auth } from '../firebase';
 import { useNavigation } from '@react-navigation/core'
-import RegistrationScreen from './RegistrationScreen';
 import { Card } from 'react-native-paper';
 
 const LoginScreen = () => {
@@ -16,6 +15,7 @@ const LoginScreen = () => {
     }
 
     const handleLogin = () => {
+        email === '' || password === '' ? alert('Please fill all the fields') : 
         auth
             .signInWithEmailAndPassword(email, password)
             .then(userCredentials => {
@@ -43,7 +43,7 @@ const LoginScreen = () => {
         >
             <View style={styles.inputContainer}>
                 <Card.Cover source={{ uri: 'https://drive.google.com/uc?id=1v-RLROQ2-xBGz3yItEZ1WuJjcmF_fBa9' }}
-                    style={{ borderRadius: 20, marginBottom: 20, justifyContent: 'center' }}
+                    style={{ borderRadius: 20, marginBottom: 20, justifyContent: 'center', width: 200, height: 200, alignSelf: 'center' }}
                 />
                 <TextInput
                     placeholder="Email"
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginBottom: 20,
         textAlign: 'center',
-        fontFamily: 'sans-serif-bold',
+        
     },
     footerText: {
         marginTop: 20,

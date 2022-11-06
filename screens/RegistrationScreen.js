@@ -12,19 +12,20 @@ export default function RegistrationScreen() {
   const navigation = useNavigation()
 
   const handleSignUp = () => {
-    if (password !== confirmPassword) {
-      alert("Passwords don't match.")
-      return
-    }
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user;
-        console.log('Registered with:', user.email);
-        alert('Registered!', `Registered with: ${user.email}`);
-        navigation.navigate('Login');
-      })
-      .catch(error => alert(error.message))
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    email === '' || password === '' || confirmPassword === '' ? alert('Please fill all the fields') :
+      email.match(reg) ? 
+        password !== confirmPassword ? alert('Passwords do not match') :
+          auth
+            .createUserWithEmailAndPassword(email, password)
+            .then(userCredentials => {
+              const user = userCredentials.user;
+              console.log('Registered with:', user.email);
+              alert('Registered!', `Registered with: ${user.email}`);
+              navigation.navigate('Login');
+            })
+            .catch(error => alert(error.message))
+      : alert('Please enter a valid email address')
   }
 
   const handleLogin = () => {
@@ -38,7 +39,7 @@ export default function RegistrationScreen() {
     >
       <View style={styles.inputContainer}>
         <Card.Cover source={{ uri: 'https://drive.google.com/uc?id=1v-RLROQ2-xBGz3yItEZ1WuJjcmF_fBa9' }}
-          style={{ borderRadius: 20, marginBottom: 20, justifyContent: 'center' }}
+          style={{ borderRadius: 20, marginBottom: 20, justifyContent: 'center', width: 200, height: 200, alignSelf: 'center' }}
         />
         <TextInput
           placeholder="Email"
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 20,
     textAlign: 'center',
-    fontFamily: 'sans-serif-bold',
+
   },
   footerText: {
     marginTop: 20,

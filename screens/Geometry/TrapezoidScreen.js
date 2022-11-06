@@ -8,21 +8,15 @@ const TrapezoidScreen = () => {
     const [sideh, setSideh] = useState('')
     const [area, setArea] = useState('')
     const [perimeter, setPerimeter] = useState('')
+    
     const handleArea = () => {
-        if (sidea ==='' || sideb === '' || sideh === '') {
-            alert('Please enter a value')
-        } else {
-            const area = (0.5 * sidea) + (0.5 * sideb) * sideh
-            alert('Area of Trapezoid is: ' + area + ' cm^2')
-        }
+        var localarea = (parseInt(sidea) + parseInt(sideb)) / 2 * sideh
+        sidea === '' || sideb === '' || sideh === '' ? alert('Please enter a value') : setArea(localarea.toString())
     }
-    const handleCircumference = () => {
-        if (sidea === '' || sideb === '' || sidec === '') {
-            alert('Please enter a value')
-        } else {
-            const circumference = ((2 * sidea) + (2* sideb) + (4 * sidec))/2
-            alert('Circumference of Trapezoid is: ' + circumference + ' cm')
-        }
+
+    const handlePerimeter = () => {
+        var localperimeter = parseInt(sidea) + parseInt(sideb) + parseInt(sidec) + parseInt(sidec)
+        sidea === '' || sideb === '' || sidec === '' ? alert('Please enter a value') : setPerimeter(localperimeter.toString())
     }
 
     return (
@@ -69,25 +63,25 @@ const TrapezoidScreen = () => {
 
                 <View style={[styles.buttonContainer, { flexDirection: 'row' }]}>
                     <TouchableOpacity
-                        onPress={() => (sidea === '' || sideb === '' || sideh === '') ? alert('Please enter a value') : setArea(((0.5 * sidea) + (0.5 * sideb)) * sideh)}
+                        onPress={handleArea}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Area</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => (sidea === '' || sideb === '' || sidec === '') ? alert('Please enter a value') : setPerimeter(((2 * sidea) + (2* sideb) + (4 * sidec))/2)}
+                        onPress={handlePerimeter}
                         style={styles.button}
                     >
-                        <Text style={styles.buttonText}>Circumference</Text>
+                        <Text style={styles.buttonText}>Perimeter</Text>
                     </TouchableOpacity>
                 </View>
 
                 {area !== '' && (
-                    <Text style={styles.detailtext}>Area of Trapezoid is: {area} cm^2</Text>    
+                    <Text style={{ marginTop: 20 }}>Area of Trapezoid is: {area} cm^2</Text>    
                 )}
 
                 {perimeter !== '' && (
-                    <Text style={styles.detailtext}>Circumference of Trapezoid is: {perimeter} cm</Text>
+                    <Text style={{ marginTop: 20 }}>Perimeter of Trapezoid is: {perimeter} cm</Text>
                 )}
             </KeyboardAvoidingView>
         </ScrollView>
@@ -153,12 +147,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         textAlign: 'center',
-        fontFamily: 'sans-serif-bold',
+        
     },
-    detailtext: {
-        fontSize: 16,
-        margin: 5,
-        textAlign: 'start',
-        fontFamily: 'sans-serif',
-    },
+    
 })

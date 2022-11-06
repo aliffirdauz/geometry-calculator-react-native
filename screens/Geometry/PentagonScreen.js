@@ -5,21 +5,15 @@ const PentagonScreen = () => {
     const [side, setSide] = useState('')
     const [area, setArea] = useState('')
     const [perimeter, setPerimeter] = useState('')
+    
     const handleArea = () => {
-        if (side === '') {
-            alert('Please enter a value')
-        } else {
-            const area = (5 * side * side) / (4 * Math.tan(Math.PI / 5))
-            alert('Area of Pentagon is: ' + area + ' cm^2')
-        }
+        var localarea = (5 * side * side) / (4 * Math.tan(Math.PI / 5))
+        side === '' ? alert('Please enter a value') : setArea(localarea.toString())
     }
-    const handleCircumference = () => {
-        if (side === '') {
-            alert('Please enter a value')
-        } else {
-            const circumference = 5 * side
-            alert('Circumference of Pentagon is: ' + circumference + ' cm')
-        }
+
+    const handlePerimeter = () => {
+        var localperimeter = 5 * side
+        side === '' ? alert('Please enter a value') : setPerimeter(localperimeter.toString())
     }
 
     return (
@@ -44,13 +38,13 @@ const PentagonScreen = () => {
 
                 <View style={[styles.buttonContainer, { flexDirection: 'row' }]}>
                     <TouchableOpacity
-                        onPress={() => (side === '') ? alert('Please enter side of a pentagon') : setArea((5 * side * side) / (4 * Math.tan(Math.PI / 5)))}
+                        onPress={handleArea}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Area</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => (side === '') ? alert('Please enter side of a pentagon') : setPerimeter(5 * side)}
+                        onPress={handlePerimeter}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Perimeter</Text>
@@ -58,11 +52,11 @@ const PentagonScreen = () => {
                 </View>
 
                 {area !== '' && (
-                    <Text style={[styles.detailtext, { marginTop: 20 }]}>Area of Pentagon is: {area} cm^2</Text>
+                    <Text style={{ marginTop: 20 }}>Area of Pentagon is: {area} cm^2</Text>
                 )}
 
                 {perimeter !== '' && (
-                    <Text style={[styles.detailtext, { marginTop: 20 }]}>Perimeter of Pentagon is: {perimeter} cm</Text>
+                    <Text style={{ marginTop: 20 }}>Perimeter of Pentagon is: {perimeter} cm</Text>
                 )}
             </KeyboardAvoidingView>
         </ScrollView>
@@ -128,12 +122,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         textAlign: 'center',
-        fontFamily: 'sans-serif-bold',
+        
     },
-    detailtext: {
-        fontSize: 16,
-        margin: 5,
-        textAlign: 'start',
-        fontFamily: 'sans-serif',
-    },
+    
 })

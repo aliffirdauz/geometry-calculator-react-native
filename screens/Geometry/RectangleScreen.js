@@ -7,6 +7,16 @@ const RectangleScreen = () => {
     const [area, setArea] = useState('')
     const [perimeter, setPerimeter] = useState('')
 
+    const handleArea = () => {
+        var localarea = length * width
+        length === '' || width === '' ? alert('Please enter a value') : setArea(localarea.toString())
+    }
+
+    const handlePerimeter = () => {
+        var localperimeter = 2 * (parseInt(length) + parseInt(width))
+        length === '' || width === '' ? alert('Please enter a value') : setPerimeter(localperimeter.toString())
+    }
+
     return (
         <ScrollView>
             <KeyboardAvoidingView
@@ -36,13 +46,13 @@ const RectangleScreen = () => {
 
                 <View style={[styles.buttonContainer, { flexDirection: 'row' }]}>
                     <TouchableOpacity
-                        onPress={() => (length === '' || width === '') ? alert('Please enter length and width of a rectangle') : setArea(length * width)}
+                        onPress={handleArea}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Area</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => (length === '' || width === '') ? alert('Please enter length and width of a rectangle') : setPerimeter((2 * length) + (2 * width))}
+                        onPress={handlePerimeter}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Perimeter</Text>
@@ -50,11 +60,11 @@ const RectangleScreen = () => {
                 </View>
 
                 {area !== '' && (
-                    <Text style={[styles.detailtext, { marginTop: 20 }]}>Area of Rectangle is: {area} cm^2</Text>
+                    <Text style={{ marginTop: 20 }}>Area of Rectangle is: {area} cm^2</Text>
                 )}
 
                 {perimeter !== '' && (
-                    <Text style={[styles.detailtext, { marginTop: 20 }]}>Perimeter of Rectangle is: {perimeter} cm</Text>
+                    <Text style={{ marginTop: 20 }}>Perimeter of Rectangle is: {perimeter} cm</Text>
                 )}
 
             </KeyboardAvoidingView>
@@ -121,12 +131,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         textAlign: 'center',
-        fontFamily: 'sans-serif-bold',
+        
     },
-    detailtext: {
-        fontSize: 16,
-        margin: 5,
-        textAlign: 'start',
-        fontFamily: 'sans-serif',
-    },
+    
 })

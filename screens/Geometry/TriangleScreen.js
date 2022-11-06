@@ -9,6 +9,16 @@ const TriangleScreen = () => {
     const [area, setArea] = useState('')
     const [perimeter, setPerimeter] = useState('')
 
+    const handleArea = () => {
+        var localarea = (sideb * sideh) / 2
+        sideb === '' || sideh === '' ? alert('Please enter a value') : setArea(localarea.toString())
+    }
+
+    const handlePerimeter = () => {
+        var localperimeter = parseInt(sidea) + parseInt(sideb) + parseInt(sidec)
+        sidea === '' || sideb === '' || sidec === '' ? alert('Please enter a value') : setPerimeter(localperimeter.toString())
+    }
+
     return (
         <ScrollView>
             <KeyboardAvoidingView
@@ -52,13 +62,13 @@ const TriangleScreen = () => {
 
                 <View style={[styles.buttonContainer, { flexDirection: 'row' }]}>
                     <TouchableOpacity
-                        onPress={() => (sideb === '' || sideh === '') ? alert('Please enter a value') : setArea(0.5 * sideb * sideh)}
+                        onPress={handleArea}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Area</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => (sidea === '' || sideb === '' || sidec === '') ? alert('Please enter a value') : setPerimeter(((2 * sidea) + (2* sideb) + (2 * sidec))/2)}
+                        onPress={handlePerimeter}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Perimeter</Text>
@@ -66,10 +76,10 @@ const TriangleScreen = () => {
                 </View>
 
                 {area !== '' && (
-                    <Text style={[styles.detailtext,{marginTop: 20}]}>Area of Triangle is: {area} cm^2</Text>
+                    <Text style={{ marginTop : 20}}>Area of Triangle is: {area} cm^2</Text>
                 )}
                 {perimeter !== '' && (
-                    <Text style={[styles.detailtext,{marginTop: 20}]}>Perimeter of Triangle is: {perimeter} cm</Text>
+                    <Text style={{ marginTop : 20}}>Perimeter of Triangle is: {perimeter} cm</Text>
                 )}
             </KeyboardAvoidingView>
         </ScrollView>
@@ -135,12 +145,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         textAlign: 'center',
-        fontFamily: 'sans-serif-bold',
+        
     },
-    detailtext: {
-        fontSize: 16,
-        margin: 5,
-        textAlign: 'start',
-        fontFamily: 'sans-serif',
-    },
+    
 })

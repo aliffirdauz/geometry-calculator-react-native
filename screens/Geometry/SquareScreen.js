@@ -6,6 +6,16 @@ const SquareScreen = () => {
     const [area, setArea] = useState('')
     const [perimeter, setPerimeter] = useState('')
 
+    const handleArea = () => {
+        var localarea = side * side
+        side === '' ? alert('Please enter a value') : setArea(localarea.toString())
+    }
+
+    const handlePerimeter = () => {
+        var localperimeter = 4 * side
+        side === '' ? alert('Please enter a value') : setPerimeter(localperimeter.toString())
+    }
+
     return (
         <ScrollView>
             <KeyboardAvoidingView
@@ -14,27 +24,27 @@ const SquareScreen = () => {
             >
                 <View style={styles.inputContainer}>
                     <Text style={styles.title}>Square Formulas :</Text>
-                    <Text style={styles.detailtext}>a = side of a square</Text>
+                    <Text>a = side of a square</Text>
                     <TextInput
                         placeholder="Input side of a square"
                         value={side}
                         onChangeText={text => setSide(text)}
                         style={styles.input}
                     />
-                    <Text style={styles.detailtext}>Perimeter, P = 4a</Text>
-                    <Text style={styles.detailtext}>Area, A = a2</Text>
-                    <Text style={styles.detailtext}>Diagonal, d = a√2</Text>
+                    <Text>Perimeter, P = 4a</Text>
+                    <Text>Area, A = a2</Text>
+                    <Text>Diagonal, d = a√2</Text>
                 </View>
 
                 <View style={[styles.buttonContainer, { flexDirection: 'row' }]}>
                     <TouchableOpacity
-                        onPress={() => (side === '') ? alert('Please enter side of a square') : setArea(side * side)}
+                        onPress={handleArea}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Area</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => setPerimeter(4*side)}
+                        onPress={handlePerimeter}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Perimeter</Text>
@@ -42,11 +52,11 @@ const SquareScreen = () => {
                 </View>
 
                 {area !== '' && (
-                    <Text style={[styles.detailtext,{marginTop: 20}]}>Area of Square is: {area} cm^2</Text>
+                    <Text style={{marginTop: 20}}>Area of Square is: {area} cm^2</Text>
                 )}
 
                 {perimeter !== '' && (
-                    <Text style={[styles.detailtext,{marginTop: 20}]}>Perimeter of Square is: {perimeter} cm</Text>
+                    <Text style={{marginTop: 20}}>Perimeter of Square is: {perimeter} cm</Text>
                 )}
 
             </KeyboardAvoidingView>
@@ -113,12 +123,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         textAlign: 'center',
-        fontFamily: 'sans-serif-bold',
-    },
-    detailtext: {
-        fontSize: 16,
-        margin: 5,
-        textAlign: 'start',
-        fontFamily: 'sans-serif',
+        
     },
 })

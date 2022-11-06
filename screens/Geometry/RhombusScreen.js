@@ -8,6 +8,16 @@ const RhombusScreen = () => {
     const [area, setArea] = useState('')
     const [perimeter, setPerimeter] = useState('')
 
+    const handleArea = () => {
+        var localarea = (diameter1 * diameter2) / 2
+        diameter1 === '' || diameter2 === '' ? alert('Please enter a value') : setArea(localarea.toString())
+    }
+
+    const handlePerimeter = () => {
+        var localperimeter = 4 * sidea
+        sidea === '' ? alert('Please enter a value') : setPerimeter(localperimeter.toString())
+    }
+
     return (
         <ScrollView>
             <KeyboardAvoidingView
@@ -43,13 +53,13 @@ const RhombusScreen = () => {
 
                 <View style={[styles.buttonContainer, { flexDirection: 'row' }]}>
                     <TouchableOpacity
-                        onPress={() => (diameter1 === '' || diameter2 === '') ? alert('Please enter diameter 1 and diameter 2 of a rhombus') : setArea((diameter1 * diameter2)/2)}
+                        onPress={handleArea}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Area</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => (sidea === '') ? alert('Please enter side of a rhombus') : setPerimeter(4*sidea)}
+                        onPress={handlePerimeter}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Perimeter</Text>
@@ -57,11 +67,11 @@ const RhombusScreen = () => {
                 </View>
 
                 {area !== '' && (
-                    <Text style={[styles.detailtext,{marginTop: 20}]}>Area of Rhombus is: {area} cm^2</Text>
+                    <Text style={{ marginTop : 20}}>Area of Rhombus is: {area} cm^2</Text>
                 )}
 
                 {perimeter !== '' && (
-                    <Text style={[styles.detailtext,{marginTop: 20}]}>Perimeter of Rhombus is: {perimeter} cm</Text>
+                    <Text style={{ marginTop : 20}}>Perimeter of Rhombus is: {perimeter} cm</Text>
                 )}
             </KeyboardAvoidingView>
         </ScrollView>
@@ -127,12 +137,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         textAlign: 'center',
-        fontFamily: 'sans-serif-bold',
+        
     },
-    detailtext: {
-        fontSize: 16,
-        margin: 5,
-        textAlign: 'start',
-        fontFamily: 'sans-serif',
-    },
+    
 })

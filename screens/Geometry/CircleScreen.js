@@ -6,6 +6,16 @@ const CircleScreen = () => {
     const [area, setArea] = useState('')
     const [circumference, setCircumference] = useState('')
 
+    const handleArea = () => {
+        var localarea = 3.14 * radius * radius
+        radius === '' ? alert('Please enter a value') : setArea(localarea.toString())
+    }
+
+    const handleCircumference = () => {
+        var localcircumference = 2 * 3.14 * radius
+        radius === '' ? alert('Please enter a value') : setCircumference(localcircumference.toString())
+    }
+
     return (
         <ScrollView>
             <KeyboardAvoidingView
@@ -14,27 +24,27 @@ const CircleScreen = () => {
             >
                 <View style={styles.inputContainer}>
                     <Text style={styles.title}>Circle Formulas :</Text>
-                    <Text style={styles.detailtext}>r = radius of a circle</Text>
+                    <Text>r = radius of a circle</Text>
                     <TextInput
                         placeholder="Input radius"
                         value={radius}
                         onChangeText={text => setRadius(text)}
                         style={styles.input}
                     />
-                    <Text style={styles.detailtext}>Circumference = 2πr</Text>
-                    <Text style={styles.detailtext}>Area = πr2</Text>
-                    <Text style={styles.detailtext}>Diameter = 2r</Text>
+                    <Text>Circumference = 2πr</Text>
+                    <Text>Area = πr2</Text>
+                    <Text>Diameter = 2r</Text>
                 </View>
 
                 <View style={[styles.buttonContainer, { flexDirection: 'row' }]}>
                     <TouchableOpacity
-                        onPress={() => (radius === '') ? alert('Please enter radius of a circle') : setArea(3.14 * radius * radius)}
+                        onPress={handleArea}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Area</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => setCircumference(2*radius*3.14)}
+                        onPress={handleCircumference}
                         style={styles.button}
                     >
                         <Text style={styles.buttonText}>Circumference</Text>
@@ -42,11 +52,11 @@ const CircleScreen = () => {
                 </View>
 
                 {area !== '' && (
-                    <Text style={[styles.detailtext,{marginTop: 20}]}>Area of Circle is: {area} cm^2</Text>
+                    <Text style={{marginTop: 20}}>Area of Circle is: {area} cm^2</Text>
                 )}
 
                 {circumference !== '' && (
-                    <Text style={[styles.detailtext,{marginTop: 20}]}>Circumference of Circle is: {circumference} cm</Text>
+                    <Text style={{marginTop: 20}}>Circumference of Circle is: {circumference} cm</Text>
                 )}
 
 
@@ -114,12 +124,5 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         textAlign: 'center',
-        fontFamily: 'sans-serif-bold',
-    },
-    detailtext: {
-        fontSize: 16,
-        margin: 5,
-        textAlign: 'start',
-        fontFamily: 'sans-serif',
     },
 })

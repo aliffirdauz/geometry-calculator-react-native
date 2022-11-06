@@ -153,11 +153,11 @@ export default function BioScreen() {
                         <Card.Cover source={{ uri: image }} style={{ margin: 20, width: 200, height: 200 }} />
                         <TouchableOpacity
                             onPress={pickImage}
-                            style={styles.buttonimage}
+                            style={[styles.buttonimage,{justifyContent:'center', alignSelf:'center'}]}
                         ><Text style={styles.buttonText}>Change Image</Text></TouchableOpacity>
                     </View>
                 }
-                <View style={[styles.buttonContainer, { marginTop: '10', marginBottom: '10' }]}>
+                <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         onPress={handleSignOut}
                         style={[styles.button, { width: 100, marginTop: 20, backgroundColor: 'red' }]}
