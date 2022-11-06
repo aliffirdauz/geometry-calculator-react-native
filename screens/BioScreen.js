@@ -77,7 +77,7 @@ export default function BioScreen() {
     }
 
     return (
-        <ScrollView style={{ backgroundColor: 'white' }}>
+        <ScrollView style={{ backgroundColor: 'f2f2f2' }}>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
                 <Text style={[styles.title, { fontWeight: 'bold' }]}>Welcome {auth.currentUser?.email}</Text>
                 <Text style={styles.title}>Please complete your bio to continue.</Text>

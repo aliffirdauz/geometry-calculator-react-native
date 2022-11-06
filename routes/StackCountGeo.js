@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator()
 const StackCountGeo = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen options={{ headerShown: false }} name="Calculator" component={CalculateScreen} />
+      <Stack.Screen options={{ headerShown: false }} name="Calculator2" component={CalculateScreen} />
       <Stack.Screen options={{ headerShown: false }} name="Circle" component={CircleScreen} />
       <Stack.Screen options={{ headerShown: false }} name="Square" component={SquareScreen} />
       <Stack.Screen options={{ headerShown: false }} name="Rectangle" component={RectangleScreen} />

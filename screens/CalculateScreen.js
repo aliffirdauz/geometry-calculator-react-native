@@ -56,58 +56,58 @@ const Flex = () => {
             <View style={[styles.container, {
                 flexDirection: "column", height: '100%'
             }]}>
-                <View style={{ flex: 1, flexDirection: "row" }}>
+                <View style={{ flex: 1, flexDirection: "row", marginTop: 20 }}>
                     <TouchableOpacity onPress={handleCircle} style={styles.buttonn}>
                         <View>
-                            <Card.Cover source={{ uri: image }} style={{ width: 100, height: 100 }} />
+                            <Card.Cover source={{ uri: image }} style={[styles.box, { width: 150, height: 150 }]} />
                             <Text style={styles.text}> Circle</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleSquare} style={styles.buttonn}>
                         <View>
-                            <Card.Cover source={{ uri: image2 }} style={{ width: 100, height: 100 }} />
+                            <Card.Cover source={{ uri: image2 }} style={[styles.box, { width: 150, height: 150 }]} />
                             <Text style={styles.text}> Square</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
-                <View style={{ flex: 1, flexDirection: "row" }}>
+                <View style={{ flex: 1, flexDirection: "row", marginTop: 20 }}>
                     <TouchableOpacity onPress={handleRectangle} style={styles.buttonn}>
                         <View>
-                            <Card.Cover source={{ uri: image3 }} style={{ width: 100, height: 100 }} />
+                            <Card.Cover source={{ uri: image3 }} style={[styles.box, { width: 150, height: 150 }]} />
                             <Text style={styles.text}>Rectangle</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleParallelogram} style={styles.buttonn}>
                         <View>
-                            <Card.Cover source={{ uri: image4 }} style={{ width: 100, height: 100 }} />
+                            <Card.Cover source={{ uri: image4 }} style={[styles.box, { width: 150, height: 150 }]} />
                             <Text style={styles.text}>Parallelogram</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
-                <View style={{ flex: 1, flexDirection: "row" }}>
+                <View style={{ flex: 1, flexDirection: "row", marginTop: 20 }}>
                     <TouchableOpacity onPress={handleRhombus} style={styles.buttonn}>
                         <View>
-                            <Card.Cover source={{ uri: image5 }} style={{ width: 100, height: 100 }} />
+                            <Card.Cover source={{ uri: image5 }} style={[styles.box, { width: 150, height: 150 }]} />
                             <Text style={styles.text}>Rhombus</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleTriangle} style={styles.buttonn}>
                         <View>
-                            <Card.Cover source={{ uri: image6 }} style={{ width: 100, height: 100 }} />
+                            <Card.Cover source={{ uri: image6 }} style={[styles.box, { width: 150, height: 150 }]} />
                             <Text style={styles.text}>Triangle</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
-                <View style={{ flex: 1, flexDirection: "row" }}>
+                <View style={{ flex: 1, flexDirection: "row", marginTop: 20 }}>
                     <TouchableOpacity onPress={handlePentagon} style={styles.buttonn}>
                         <View>
-                            <Card.Cover source={{ uri: image7 }} style={{ width: 100, height: 100 }} />
+                            <Card.Cover source={{ uri: image7 }} style={[styles.box, { width: 150, height: 150 }]} />
                             <Text style={styles.text}>Pentagon</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleTrapezoid} style={styles.buttonn}>
                         <View>
-                            <Card.Cover source={{ uri: image8 }} style={{ width: 100, height: 100 }} />
+                            <Card.Cover source={{ uri: image8 }} style={[styles.box, { width: 150, height: 150 }]} />
                             <Text style={styles.text}>Trapezoid</Text>
                         </View>
                     </TouchableOpacity>
@@ -125,9 +125,7 @@ const styles = StyleSheet.create({
     box: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
-        width: '185px',
-        height: '185px',
+        alignSelf: "center",
     },
     buttonn: {
         flex: 1,
@@ -141,9 +139,12 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 32,
         color: "black",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
     },
     title: {
-        fontSize: 32,
+        fontSize: 48,
         color: "black",
         fontWeight: "bold",
         // fontFamily: 'sans-serif-bold',
